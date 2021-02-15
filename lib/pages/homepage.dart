@@ -51,6 +51,7 @@ class _HomePageState extends State<HomePage> {
   //       children: messages.map(buildMessage).toList(),
   //     );
 
+  final user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -71,12 +72,12 @@ class _HomePageState extends State<HomePage> {
                 }
               }),
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Text(
-            '+',
-            style: TextStyle(fontSize: 35.0),
-          ),
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   child: Text(
+        //     '+',
+        //     style: TextStyle(fontSize: 35.0),
+        //   ),
+        // ),
       );
 
   Widget buildLoading() => Center(child: CircularProgressIndicator());
