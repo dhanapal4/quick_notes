@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'dart:developer' as dev;
 //import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:provider/provider.dart';
-import 'package:quick_notes/model/message.dart';
 import 'package:quick_notes/pages/add_note.dart';
+import 'package:quick_notes/pages/authenticate/sign_in.dart';
 import 'package:quick_notes/pages/logged_in.dart';
 import 'package:quick_notes/pages/sign_up.dart';
 import 'package:quick_notes/provider/google_sign_in.dart';
@@ -35,8 +35,8 @@ class _WrapperState extends State<Wrapper> {
                   return buildLoading();
                 } else if (snapshot.hasData) {
                   isLoggedin = true;
-
-                  return LoggedInWidget();
+                  return SignIn();
+                  //return LoggedInWidget();
                 } else {
                   return SignUpWidget();
                 }
@@ -45,9 +45,4 @@ class _WrapperState extends State<Wrapper> {
       );
 
   Widget buildLoading() => Center(child: CircularProgressIndicator());
-
-  Widget buildMessage(Message e) => ListTile(
-        title: Text(e.title),
-        subtitle: Text(e.body),
-      );
 }

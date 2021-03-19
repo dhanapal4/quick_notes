@@ -138,7 +138,7 @@ class _LoggedInWidgetState extends State<LoggedInWidget> {
 
   Widget _myCloudData() {
     return StreamBuilder(
-      stream: FirebaseFirestore.instance.collection(user.email).snapshots(),
+      stream: FirebaseFirestore.instance.collection('notes').snapshots(),
       // .doc('63FkPKrpQ9WVvfPniQnm')
       // .snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
