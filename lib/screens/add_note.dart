@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quick_notes/model/note_model.dart';
-import 'package:quick_notes/pages/wrapper.dart';
+import 'package:quick_notes/screens/wrapper.dart';
 
 class AddNote extends StatelessWidget {
   TextEditingController titleController = TextEditingController();
@@ -55,7 +55,7 @@ class AddNote extends StatelessWidget {
         .whenComplete(() {
       isAdded = true;
       print('Note successfully Added to Firestore');
-      Get.offAll(() => Wrapper('Quick Notes'));
+      Get.offAll(() => Wrapper());
       Get.snackbar('Added', 'Note succesfully added');
     }).catchError((onError) {
       isAdded = false;

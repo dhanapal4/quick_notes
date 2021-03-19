@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_notes/main.dart';
 import 'package:quick_notes/model/note_model.dart';
-import 'package:quick_notes/pages/add_note.dart';
+import 'package:quick_notes/screens/add_note.dart';
 import 'package:quick_notes/provider/google_sign_in.dart';
 import 'package:quick_notes/provider/api_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

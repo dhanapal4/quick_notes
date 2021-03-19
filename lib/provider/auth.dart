@@ -36,4 +36,12 @@ class AuthService {
 
   //signout
 
+  Future signOut() async {
+    try {
+      return await _auth.signOut();
+    } catch (e) {
+      print('In Signout CATCH Block - $e');
+      return null;
+    }
+  }
 }
