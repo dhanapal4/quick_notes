@@ -7,6 +7,9 @@ class SignUpWidget extends StatelessWidget {
   Widget build(BuildContext context) => Container(
         child: Center(
           child: ElevatedButton(
+            style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.orange.shade300)),
             child: Text('Google SignIn'),
             onPressed: () {
               print('pressed');

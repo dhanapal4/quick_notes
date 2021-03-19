@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:quick_notes/pages/homepage.dart';
+import 'package:quick_notes/pages/wrapper.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage('Quick Notes'),
+      home: Wrapper('Quick Notes'),
     );
   }
 }
