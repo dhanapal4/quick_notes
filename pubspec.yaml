@@ -33,6 +33,12 @@ dependencies:
   firebase_core: ^0.7.0
   firebase_auth: ^0.20.0+1
   google_sign_in: ^4.5.9
+  http: ^0.12.2
+  cloud_firestore: ^0.16.0+1
+  flutter_spinkit: ^5.0.0
+
+  #GetX State Management
+  get: ^3.26.0
 
 dev_dependencies:
   flutter_test:
