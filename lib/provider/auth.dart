@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:quick_notes/model/user_model.dart';
+import 'package:quick_notes/provider/database.dart';
 
 //Authentication for Email Sign-In and Anonymous authentication from Firebase
 class AuthService {
@@ -49,6 +50,13 @@ class AuthService {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
+      //create new document for the user with uid
+      await DatabaseService(uid: user.uid).updateUserData(
+          'Welcome to quick note',
+          'Start taking note quickly',
+          DateTime.now(),
+          100);
+
       return _userFromFirebaseUser(user);
     } catch (e) {
       print('ERROR IN CATCH BOCK REGISTER WITH EMAIL & PASSWORD - $e');
