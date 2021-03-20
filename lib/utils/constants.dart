@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Constants {
-  var bkgColor = Colors.white;
-}
+const textInputDecoration = InputDecoration(
+    fillColor: Colors.white,
+    filled: true,
+    enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+      color: Colors.orangeAccent,
+      width: 1.0,
+    )),
+    focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+      color: Colors.orangeAccent,
+      width: 2.5,
+    )));

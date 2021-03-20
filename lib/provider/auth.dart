@@ -17,6 +17,7 @@ class AuthService {
       //.map((User user) => _userFromFirebaseUser(user));//same as below
       .map(_userFromFirebaseUser);
 
+  //sign in with anonymous
   Future<UserModel> signInAnon() async {
     try {
       UserCredential result = await _auth.signInAnonymously();
@@ -28,11 +29,32 @@ class AuthService {
       return null;
     }
   }
-  //sign in with anonymous
 
   //sign in with email & password
+  Future signInWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      User user = result.user;
+      return _userFromFirebaseUser(user);
+    } catch (e) {
+      print('ERROR IN CATCH BOCK REGISTER WITH EMAIL & PASSWORD - $e');
+      return null;
+    }
+  }
 
   //register with email & password
+  Future registerWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      User user = result.user;
+      return _userFromFirebaseUser(user);
+    } catch (e) {
+      print('ERROR IN CATCH BOCK REGISTER WITH EMAIL & PASSWORD - $e');
+      return null;
+    }
+  }
 
   //signout
 
