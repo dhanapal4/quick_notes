@@ -40,6 +40,12 @@ dependencies:
   #GetX State Management
   get: ^3.26.0
 
+  #Database
+  hive: ^2.0.0
+  hive_flutter: ^1.0.0
+
+  random_color: ^1.0.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

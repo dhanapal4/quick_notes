@@ -60,8 +60,10 @@ class _SignInState extends State<SignIn> {
                           : !val.contains('@')
                               ? 'Enter Valid Email ID'
                               : null,
-                      decoration:
-                          textInputDecoration.copyWith(hintText: 'Email'),
+                      decoration: textInputDecoration.copyWith(
+                          hintText: 'Email',
+                          labelText: 'Email',
+                          labelStyle: TextStyle(color: Colors.orange)),
                     ),
                     SizedBox(
                       height: 20,
@@ -76,8 +78,10 @@ class _SignInState extends State<SignIn> {
                       validator: (val) => val.length < 6
                           ? 'Enter password 6+ chars long'
                           : null,
-                      decoration:
-                          textInputDecoration.copyWith(hintText: 'Password'),
+                      decoration: textInputDecoration.copyWith(
+                          hintText: 'Password',
+                          labelText: 'Password',
+                          labelStyle: TextStyle(color: Colors.orange)),
                     ),
                     SizedBox(
                       height: 20,

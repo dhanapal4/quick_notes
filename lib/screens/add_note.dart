@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:quick_notes/model/note_model.dart';
+import 'package:quick_notes/screens/home/home.dart';
+import 'package:quick_notes/screens/home/notes_list.dart';
 import 'package:quick_notes/screens/wrapper.dart';
 
 class AddNote extends StatelessWidget {
@@ -27,7 +30,7 @@ class AddNote extends StatelessWidget {
             controller: noteController,
           ),
           TextButton(
-            onPressed: addNoteToCloud,
+            onPressed: () => addNoteToDB(),
             child: Text('Add Note'),
             style: ButtonStyle(
                 backgroundColor:
@@ -39,6 +42,7 @@ class AddNote extends StatelessWidget {
   }
 
   void addNoteToCloud() {
+    //Firestore add note
     bool isAdded = false;
     CollectionReference collectionReference =
         FirebaseFirestore.instance.collection('notes');
@@ -66,5 +70,25 @@ class AddNote extends StatelessWidget {
       print('On Error $error - $stackTrace');
       Get.snackbar('Error', 'Unable to add');
     });
+  }
+
+  addNoteToDB() {
+    var box = Hive.box('my_notes_box');
+    var boxSeq = Hive.box('box_sequence');
+    print('boxseq before--${boxSeq.get('seq')}');
+    var current=boxSeq.get('seq');
+    (current!=null)?boxSeq.put('seq', current + 1):boxSeq.put('seq', 1);
+    print('boxseq current--${boxSeq.get('seq')}');
+    NoteModel n = NoteModel();
+    n.id = boxSeq.get('seq');
+    n.title = titleController.text;
+    n.body = noteController.text;
+    n.timestamp = DateTime.now().toString();
+    n.userId = null;
+    n.name = 'dhanapal';
+    //box.put(key, value);
+    box.put(n.id, n.toJson());
+    print('${box.values}');
+    Get.offAll(() => Home());
   }
 }
